@@ -1,0 +1,19 @@
+body {
+    background: #333;
+}
+
+h1, h2 {
+    font-family: Trebuchet MS, Sans;
+    text-align: center;
+    color: white;
+}
+
+div#maze svg {
+    display: block;
+    margin: 0 auto;
+}
+
+div#controls {
+    text-align: center;
+    padding: 10px;
+}
