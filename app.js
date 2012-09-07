@@ -3,15 +3,15 @@
   var CLIENT_WIDTH, Circle, DEFAULT_MAZE, MAZE_WIDTH, Maze, SCALE, paper, solveMaze,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  paper = Raphael("maze", "768", "75%");
+  paper = Raphael("maze", 768, 500);
 
-  CLIENT_WIDTH = paper.canvas.clientWidth;
+  CLIENT_WIDTH = paper.width;
 
-  MAZE_WIDTH = 19;
+  MAZE_WIDTH = 20;
 
   SCALE = CLIENT_WIDTH / MAZE_WIDTH;
 
-  DEFAULT_MAZE = '*******************\n*        *        *\n*        *  **    *\n*        *  *F    *\n*    *** *  *******\n*    * @ *        *\n*    ********     *\n*    *     *      *\n*  * *  *  *      *\n*  ***  *  ****   *\n*       *     *   *\n*       *         *\n*******************';
+  DEFAULT_MAZE = '********************\n*        *         *\n*        *  *F     *\n*    *** *  ********\n*    * @ *         *\n*    *******  ***  *\n*  ***     ****    *\n*  *               *\n*                  *\n********************';
 
   Circle = (function() {
     var COLOURS, RADIUS;
@@ -121,7 +121,7 @@
 
     Maze.prototype.changeStart = function(event) {
       var col, maze, row, rows, _ref;
-      _ref = this.toMazeCoords(event.x, event.y), row = _ref[0], col = _ref[1];
+      _ref = this.toMazeCoords(event.layerX, event.layerY), row = _ref[0], col = _ref[1];
       maze = this.maze.replace("@", " ");
       rows = maze.split('\n');
       rows[row] = rows[row].slice(0, col) + '@' + rows[row].slice(col + 1);
@@ -164,8 +164,6 @@
     };
 
     Maze.prototype.toMazeCoords = function(x, y) {
-      x -= paper.canvas.offsetLeft;
-      y -= paper.canvas.offsetTop;
       return [Math.round((y - SCALE / 2) / SCALE), Math.round((x - SCALE / 2) / SCALE)];
     };
 

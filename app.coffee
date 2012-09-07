@@ -1,22 +1,19 @@
-paper = Raphael("maze", "768", "75%")
+paper = Raphael("maze", 768, 500)
 
-CLIENT_WIDTH = paper.canvas.clientWidth
-MAZE_WIDTH = 19
+CLIENT_WIDTH = paper.width
+MAZE_WIDTH = 20
 SCALE = CLIENT_WIDTH / MAZE_WIDTH
 
-DEFAULT_MAZE = '''*******************
-                  *        *        *
-                  *        *  **    *
-                  *        *  *F    *
-                  *    *** *  *******
-                  *    * @ *        *
-                  *    ********     *
-                  *    *     *      *
-                  *  * *  *  *      *
-                  *  ***  *  ****   *
-                  *       *     *   *
-                  *       *         *
-                  *******************'''
+DEFAULT_MAZE = '''********************
+                  *        *         *
+                  *        *  *F     *
+                  *    *** *  ********
+                  *    * @ *         *
+                  *    *******  ***  *
+                  *  ***     ****    *
+                  *  *               *
+                  *                  *
+                  ********************'''
 
 
 # Circle drawn in maze
@@ -79,7 +76,7 @@ class Maze
     @trails.push new Circle row, col, "S"
 
   changeStart: (event) =>
-    [row, col] = @toMazeCoords event.x, event.y
+    [row, col] = @toMazeCoords event.layerX, event.layerY
     maze = @maze.replace("@", " ")
     rows = maze.split('\n')
     rows[row] = rows[row][...col] + '@' + rows[row][col + 1..]
@@ -117,8 +114,6 @@ class Maze
 
   # Convert maze row, col to canvas x, y.
   toMazeCoords: (x, y) ->
-    x -= paper.canvas.offsetLeft
-    y -= paper.canvas.offsetTop
     [Math.round((y - SCALE / 2) / SCALE), Math.round((x - SCALE / 2) / SCALE)]
 
 
