@@ -1,9 +1,25 @@
+# A-Star maze solver.
+#
+# The A-Star algorithm uses the following concepts to find the best path from
+# start to finish:
+#
+#  1. The cost function commonly referred to as g(). In the case of this maze
+#     solver, for any given point in a path, the number of steps taken to get
+#     to that point.
+#
+#  2. The heuristic function commonly referred to as h(). In the case of this
+#     maze solver, the best number of steps "as the crow flies" from a given
+#     point to the end point.
+
 # A location in the maze
 class Node
+  # location - the x, y coords of this node
+  # parent   - the x, y coords of the previous node in the path
+  # g        - the number of steps in the path from the start to this node
+  # end      - the location of the node we're trying to get to
   constructor: (@location, @parent, @g, end) ->
     @h = Math.abs(end[0] - location[0]) + Math.abs(end[1] - location[1])
     @f = @g + @h
-
 
 # A collection of nodes which can be manipulated and searched.
 class NodeSet
@@ -21,6 +37,7 @@ class NodeSet
     if index != -1
       @nodes.splice index, 1
 
+  # Find a single node in this set of nodes with the given location
   find: (location) ->
     for node in @nodes
       if node.location[0] == location[0] and node.location[1] == location[1]
@@ -31,16 +48,38 @@ class NodeSet
   sort: ->
     @nodes.sort (node1, node2) -> node1.f - node2.f
 
-
 # Solves the maze
 class MazeSolver
+  # The set of valid directions the path can take.
+  # In this maze, up, down, left and right are valid.
   DIRECTIONS = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 
-  # Maze as string
+  # Maze as string using the following characters:
+  #
+  # @ - start point.
+  # F - finish point.
+  # * - a point which cannot be traversed e.g. part of a wall.
+  # 
+  # For example:
+  #
+  # '''*******************
+  #    *        *        *
+  #    *        *  **    *
+  #    *        *  *F    *
+  #    *    *** *  *******
+  #    *    * @ *        *
+  #    *    ********     *
+  #    *    *     *      *
+  #    *  * *  *  *      *
+  #    *  ***  *  ****   *
+  #    *       *     *   *
+  #    *       *         *
+  #    *******************'''
   constructor: (@maze) ->
     @rows = @maze.split('\n')
     @end = @location('F')
 
+  # Solve the maze and return the route of the best path from start to finish.
   solve: ->
     start = @location('@')
     closedSet = new NodeSet
@@ -69,7 +108,7 @@ class MazeSolver
 
     @route current
 
-  # Return the traversal route through the maze
+  # Return the traversal route through the maze for a given point in the path.
   route: (node, route=[]) ->
     # Return the route from the node to the ultimate ancestor
     route.unshift(node.location)
@@ -78,7 +117,7 @@ class MazeSolver
     else
       route
 
-  # Return the location of the given char in the maze.
+  # Return the location of the given character in the maze string.
   location: (char) ->
      for row, rownum in @rows
        for col, colnum in row
@@ -86,7 +125,7 @@ class MazeSolver
            return [rownum, colnum]
      return null
 
-   # Return a character in the maze at the given location
+   # Return the character in the maze string at the given location
    content: (location) ->
      @rows[location[0]][location[1]]
 

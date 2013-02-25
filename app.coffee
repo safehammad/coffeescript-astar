@@ -15,7 +15,6 @@ DEFAULT_MAZE = '''********************
                   *                  *
                   ********************'''
 
-
 # Circle drawn in maze
 class Circle
   # Mapping of type char to html colour
@@ -47,9 +46,9 @@ class Circle
   coords: (row, col) ->
     [col * SCALE + SCALE / 2, row * SCALE + SCALE / 2]
 
-
 # Representation of maze
 class Maze
+  # Create internal representation of maze given a string representation.
   constructor: (@maze) ->
     @route = solveMaze maze
     @trails = []
@@ -116,11 +115,9 @@ class Maze
   toMazeCoords: (x, y) ->
     [Math.round((y - SCALE / 2) / SCALE), Math.round((x - SCALE / 2) / SCALE)]
 
-
 solveMaze = (maze) ->
   solver = new @astar.MazeSolver maze
   return solver.solve()
-
 
 $ ->
   m = new Maze DEFAULT_MAZE
