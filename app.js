@@ -3,7 +3,7 @@
   var CLIENT_WIDTH, Circle, DEFAULT_MAZE, MAZE_WIDTH, Maze, SCALE, paper, solveMaze,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  paper = Raphael("maze", 768, 500);
+  paper = Raphael("maze", 768, 400);
 
   CLIENT_WIDTH = paper.width;
 

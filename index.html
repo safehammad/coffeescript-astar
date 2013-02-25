@@ -58,9 +58,46 @@
     </div>
 
     <div class="wrapper">
-      <footer>
         <hr>
-      </footer>
+        <h2>How do I use this?</h2>
+          <pre class="lang-coffeescript">
+
+# Load the astar script:
+{astar} = require('./astar')
+
+# Define a maze as a string where:
+#
+#  '@' = start point
+#  'F' = end point
+#  '*' = wall
+maze ='''*********
+         *       *
+         *   *   *
+         * @ * F *
+         *********'''
+
+# Create the solver
+solver = new astar.MazeSolver maze
+
+# Get the solved route!
+route = solver.solve()
+
+# The route is a series of [row, column] pairs from start to finish
+console.log route
+
+# Output:
+# [ [ 3, 2 ],
+#   [ 3, 3 ],
+#   [ 2, 3 ],
+#   [ 1, 3 ],
+#   [ 1, 4 ],
+#   [ 1, 5 ],
+#   [ 2, 5 ],
+#   [ 2, 6 ],
+#   [ 3, 6 ] ]
+
+          </pre>
+        <hr>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
