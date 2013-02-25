@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Coffeescript-astar by safehammad</title>
+    <title>CoffeeScript-astar by safehammad</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="app.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
@@ -31,7 +32,7 @@
 
       <section>
         <div id="title">
-          <h1>Coffeescript-astar</h1>
+          <h1>CoffeeScript-astar</h1>
           <p>CoffeeScript A* Implementation</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/safehammad">safehammad</a></span>
@@ -40,9 +41,11 @@
 
         <h1>CoffeeScript A* Maze Solver</h1>
 
-<p>An implementation of the A* algorithm in CoffeeScript implemented as a maze solver.  Although this particular implementation is specific to solving basic mazes, the A* implementation should be easy to generalise.</p>
+        <p>This is an implementation of the A* algorithm in CoffeeScript implemented as a maze solver.  The maze solving algorithm can be found in <code>astar.coffee</code>. Although this particular implementation is specific to solving basic mazes, the A* implementation should be easy to generalise.</p>
 
-<p>A sample implementation is provided in <code>index.html</code> which visualises the maze using SVG via the <a href="http://raphaeljs.com/">Raphael</a> JavaScript library (included). The location of the start point can be altered by clicking anywhere on the maze.</p>
+<p>A sample implementation is provided in <code>index.html</code> (see below) which visualises the maze using SVG via the <a href="http://raphaeljs.com/">Raphael</a> JavaScript library (included). Click the Next and Previous buttons to move the trail forwards and backwards. Click the Restart button to move the trail back to the start point. The location of the start point can be altered by clicking anywhere on the maze.</p>
+
+<p>Enjoy...</p>
       </section>
 
     </div>
@@ -54,6 +57,11 @@
     <div id="maze">
     </div>
 
+    <div class="wrapper">
+      <footer>
+        <hr>
+      </footer>
+    </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
