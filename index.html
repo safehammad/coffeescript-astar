@@ -43,24 +43,10 @@
 
         <p>This is an implementation of the A* algorithm in CoffeeScript implemented as a maze solver.  The maze solving algorithm can be found in <code>astar.coffee</code>. Although this particular implementation is specific to solving basic mazes, the A* implementation should be easy to generalise.</p>
 
-<p>A sample implementation is provided in <code>index.html</code> (see sample below) which visualises the maze using SVG via the <a href="http://raphaeljs.com/">Raphael</a> JavaScript library (included). Click the Next and Previous buttons to move the trail forwards and backwards. Click the Restart button to move the trail back to the start point. The location of the start point can be altered by clicking anywhere on the maze.</p>
-
-<p>Enjoy...</p>
-      </section>
-
-    </div>
-    <div id="controls">
-        <input type="button" id="restart" value="Restart"></input>
-        <input type="button" id="previous" value="&lt;&lt; Previous"></input>
-        <input type="button" id="next" value="Next &gt;&gt;"></input>
-    </div>
-    <div id="maze">
-    </div>
-
-    <div class="wrapper">
-        <hr>
-        <h2>How do I use this?</h2>
-<div class="highlight"><pre><span class="c1"># Load the astar script:</span>
+        <h2>Usage</h2>
+        <p>The maze solver in <code>astar.coffee</code> expects a maze as a simple string describing the location of the walls and the start and finish points. The solver returns the best path from start to fininsh as an array of coordinates.</p>
+        <p>For example:</p>
+<div class="highlight"><pre><span class="c1"># Load the astar script</span>
 <span class="p">{</span><span class="nx">astar</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s">'./astar'</span><span class="p">)</span>
 
 <span class="c1"># Define a maze as a string where:</span>
@@ -94,6 +80,28 @@
 <span class="c1">#   [ 2, 6 ],</span>
 <span class="c1">#   [ 3, 6 ] ]</span>
 </pre></div>
+    <h2>Demo</h2>
+    <p>This interactive demo (found in <code>index.html</code>) visualises the maze via SVG using the <a href="http://raphaeljs.com/">Raphael</a> JavaScript library (included).
+    <ul>
+      <li>Click the Next and Previous buttons to move the trail forwards and backwards.</li>
+      <li>Click the Restart button to move the trail back to the start point.</li>
+      <li>Click anywhere in the maze to change the location of the start point.</li>
+    </ul>
+    </p>
+
+<p>Enjoy...</p>
+      </section>
+
+    </div>
+    <div id="controls">
+        <input type="button" id="restart" value="Restart"></input>
+        <input type="button" id="previous" value="&lt;&lt; Previous"></input>
+        <input type="button" id="next" value="Next &gt;&gt;"></input>
+    </div>
+    <div id="maze">
+    </div>
+
+    <div class="wrapper">
         <hr>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
